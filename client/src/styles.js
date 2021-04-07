@@ -9,5 +9,9 @@ export default makeStyles(() => ({
         justifyContent: 'center',
         alignItems: 'center',
     },
-
+    title: {
+        display: 'flex',
+        flexDirection: 'row',   
+        justifyContent: 'center',
+    }
 }));
