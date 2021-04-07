@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 //creating mongoose schema
 const postSchema = mongoose.Schema({ 
     title: 'String',
-    message: 'String',
+    content: 'String',
     creator: 'String',
     createdAt: {
         type: Date,
