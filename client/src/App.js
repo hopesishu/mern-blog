@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Typography, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
@@ -9,6 +9,7 @@ import FormDialog from './components/FormDialog/FormDialog';
 import useStyles from './styles';
 
 const App = () => {
+  const [currentId, setCurrentId] = useState(null);
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -22,17 +23,14 @@ const App = () => {
         <Typography variant="h6">
           home
         </Typography>
-      </AppBar> */}
-      <FormDialog />
+      </AppBar> */} 
+      <FormDialog currentId={currentId} setCurrentId={setCurrentId} />
       <Grow in>
         <Container>
         <Typography className={classes.title} variant="h4">Crochet Projects</Typography>
           <Grid container justify="space-between" alignItems="stretch" spacing={3}>
-            <Grid item xs={12} sm={7}>
-              <Posts />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form />
+            <Grid item xs={12} sm={12}>
+              <Posts setCurrentId={setCurrentId}/>
             </Grid>
           </Grid>
         </Container>

@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
-import { createPost } from '../../actions/posts';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPost, updatePost } from '../../actions/posts';
 
-export default function FormDialog() {
-    const [open, setOpen] = React.useState(false);
+export default function FormDialog({ currentId, setCurrentId }) {
+    const [open, setOpen] = useState(false);
     const [postData, setPostData] = useState({title: '', content: ''});
+    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+      if (post) setPostData(post);
+    }, [post]); //when post value changes, run function in useEffect
+
+
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -14,14 +21,24 @@ export default function FormDialog() {
 
     const handleClose = () => {
         setOpen(false);
+        clear();
     };
 
     const handleSubmit = (e) => {
       e.preventDefault(); //prevent refresh in browser
 
-      dispatch(createPost(postData));
-      console.log("Post button pressed");
-    }
+      if (currentId) {
+        dispatch(updatePost(currentId, postData));
+      } else {
+        dispatch(createPost(postData));
+      }
+      handleClose();
+    };
+
+    const clear = () => {
+      setCurrentId(null);
+      setPostData({title: '', content: ''});
+    };
 
     return (
         <div>
