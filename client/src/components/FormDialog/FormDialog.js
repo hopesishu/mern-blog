@@ -3,8 +3,8 @@ import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentT
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
 
-export default function FormDialog({ currentId, setCurrentId }) {
-    const [open, setOpen] = useState(false);
+export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
+    // const [open, setOpen] = useState(false); original
     const [postData, setPostData] = useState({title: '', content: ''});
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const dispatch = useDispatch();
@@ -13,12 +13,6 @@ export default function FormDialog({ currentId, setCurrentId }) {
       if (post) setPostData(post);
     }, [post]); //when post value changes, run function in useEffect
 
-
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
     const handleClose = () => {
         setOpen(false);
         clear();
@@ -26,7 +20,6 @@ export default function FormDialog({ currentId, setCurrentId }) {
 
     const handleSubmit = (e) => {
       e.preventDefault(); //prevent refresh in browser
-
       if (currentId) {
         dispatch(updatePost(currentId, postData));
       } else {
@@ -42,9 +35,6 @@ export default function FormDialog({ currentId, setCurrentId }) {
 
     return (
         <div>
-          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-            Add new post!
-          </Button>
           <Dialog fullWidth maxWidth="md" open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
               <DialogTitle id="form-dialog-title">New Post</DialogTitle>

@@ -4,17 +4,17 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
  
-const Post = ({ post, setCurrentId }) => {
+const Post = ({ post, setCurrentId, setOpen }) => {
     const handleEdit = () => {
-        
         setCurrentId(post._id);
+        setOpen(true);
     }
 
     return (
         <Card>
             <CardHeader title={post.title} subheader={moment(post.createdAt).format("LLL")} />
 
-            <Button style={{color: 'black'}} size="small" onClick={() => setCurrentId(post._id)}>
+            <Button style={{color: 'black'}} size="small" onClick={handleEdit}>
                 <MoreHorizIcon fontSize="default" />
             </Button>
 
