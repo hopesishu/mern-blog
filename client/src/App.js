@@ -10,13 +10,13 @@ import useStyles from './styles';
 const App = () => {
   const [currentId, setCurrentId] = useState(null);
   const [open, setOpen] = useState(false); //for dialog
-  
+   
   const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <Container maxidth="lg">
@@ -25,14 +25,12 @@ const App = () => {
           home
         </Typography>
       </AppBar> */} 
-
        
       <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>
         Add new post!
       </Button>
-
-
       <FormDialog currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
+      
       <Grow in>
         <Container>
         <Typography className={classes.title} variant="h4">Crochet Projects</Typography>

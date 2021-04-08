@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
 
 export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
-    // const [open, setOpen] = useState(false); original
     const [postData, setPostData] = useState({title: '', content: ''});
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const dispatch = useDispatch();
@@ -37,7 +36,7 @@ export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
         <div>
           <Dialog fullWidth maxWidth="md" open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-              <DialogTitle id="form-dialog-title">New Post</DialogTitle>
+              <DialogTitle id="form-dialog-title">{currentId ? 'Update' : 'New'} Post</DialogTitle>
               <DialogContent>
                 <DialogContentText>
                   What do you want to update on today? 
