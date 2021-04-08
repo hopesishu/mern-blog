@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Grow, Grid, Button } from '@material-ui/core';
+import { AppBar, Container, Typography, Grow, Grid, Button, Toolbar, Box } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { getPosts } from './actions/posts';
@@ -20,20 +20,20 @@ const App = () => {
 
   return (
     <Container maxidth="lg">
-      {/* <AppBar className={classes.appBar} >
-        <Typography variant="h6">
-          home
-        </Typography>
-      </AppBar> */} 
-       
-      <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>
-        Add new post!
-      </Button>
-      <FormDialog currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
+     <AppBar position="absolute">
+        <Toolbar>
+          <Typography className={classes.appBar} variant="h6">Crochet Project</Typography>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
       
+      <FormDialog currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
       <Grow in>
         <Container>
-        <Typography className={classes.title} variant="h4">Crochet Projects</Typography>
+          <Typography className={classes.title} variant="h4">Home</Typography>
+          <Button className={classes.newPost} variant="outlined" color="primary" onClick={() => setOpen(true)}>
+            Add new post!
+          </Button>
           <Grid container justify="space-between" alignItems="stretch" spacing={3}>
             <Grid item xs={12} sm={12}>
               <Posts setCurrentId={setCurrentId} setOpen={setOpen}/>

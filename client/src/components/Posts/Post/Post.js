@@ -4,10 +4,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import ConfirmDialog from '../../ConfirmDialog/ConfirmDialog';
+import useStyles from './styles';
 
  
 const Post = ({ post, setCurrentId, setOpen }) => {
     const [openConfirm, setOpenConfirm] = useState(false);
+    const classes = useStyles();
     
     const handleEdit = () => {
         setCurrentId(post._id);
@@ -26,7 +28,7 @@ const Post = ({ post, setCurrentId, setOpen }) => {
                         <MoreHorizIcon fontSize="default" />
                     </Button>}
             />
-            <CardContent>
+            <CardContent className={classes.lineBreak}>
                 <Typography variant="body1" gutterBottom>{post.content}</Typography>
             </CardContent>
             <CardActions>
