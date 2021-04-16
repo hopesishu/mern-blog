@@ -7,7 +7,7 @@ The main aim of this project is to create a simple blog application with the CRU
 3. React.js
 4. Node.js
 
-To run the project, cd into the server and client folder of this project, and run npm start.
+To run the project, cd into the server and client folder of this project, and run npm start on each folder individually.
 
 
 
