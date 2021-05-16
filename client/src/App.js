@@ -21,9 +21,9 @@ const App = () => {
 
   return (
     <Container maxidth="lg">
-     <AppBar position="absolute">
+      <AppBar position="absolute">
         <Toolbar>
-          <Typography className={classes.appBar} variant="h6">Crochet Project</Typography>
+          <Typography className={classes.appBar} variant="h6">My Project</Typography>
         </Toolbar>
       </AppBar>
       <Toolbar />

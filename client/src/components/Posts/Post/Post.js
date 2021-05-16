@@ -16,10 +16,14 @@ const Post = ({ post, setCurrentId, setOpen }) => {
         setOpen(true);
     }
 
+    const handleSeeMore = () => {
+        setCurrentId(post._id);
+    }
+
     return (
         <>
         <ConfirmDialog post={post} openConfirm={openConfirm} setOpenConfirm={setOpenConfirm} />
-        <Card>
+        <Card onClick={handleSeeMore}>
             <CardHeader 
                 title={post.title} 
                 subheader={moment(post.createdAt).format("LLL")}
@@ -28,7 +32,7 @@ const Post = ({ post, setCurrentId, setOpen }) => {
                         <MoreHorizIcon fontSize="default" />
                     </Button>}
             />
-            <CardContent className={classes.lineBreak}>
+            <CardContent className={classes.cardContent}>
                 <Typography variant="body1" gutterBottom>{post.content}</Typography>
             </CardContent>
             <CardActions>
