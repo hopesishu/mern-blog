@@ -16,14 +16,10 @@ const Post = ({ post, setCurrentId, setOpen }) => {
         setOpen(true);
     }
 
-    const handleSeeMore = () => {
-        setCurrentId(post._id);
-    }
-
     return (
         <>
         <ConfirmDialog post={post} openConfirm={openConfirm} setOpenConfirm={setOpenConfirm} />
-        <Card onClick={handleSeeMore}>
+        <Card>
             <CardHeader 
                 title={post.title} 
                 subheader={moment(post.createdAt).format("LLL")}

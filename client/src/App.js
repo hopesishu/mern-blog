@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import { AppBar, Container, Typography, Grow, Grid, Button, Toolbar, Box } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { getPosts } from './actions/posts';
 import Posts from './components/Posts/Posts';
+import PostDetails from './components/PostDetails/PostDetails';
 import FormDialog from './components/FormDialog/FormDialog';
 import useStyles from './styles';
 
 const App = () => {
   const [currentId, setCurrentId] = useState(null);
-  const [open, setOpen] = useState(false); //for dialog
+  const [open, setOpen] = useState(false); //for edit dialog
    
   const classes = useStyles();
   const dispatch = useDispatch();
