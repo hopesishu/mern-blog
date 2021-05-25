@@ -15,6 +15,9 @@ In the project directory mern-blog, the this command in both the /client and /se
 npm start
 `
 
+## Future Works
+Future works would include adding Google authentication into the system to allow user login
+
 
 
 
