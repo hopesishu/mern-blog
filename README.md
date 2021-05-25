@@ -1,13 +1,20 @@
-# crochet-project 
-The main aim of this project is to create a simple blog application with the CRUD functionalities.
+# MERN Blog
+## About 
+This blog application was built using the MERN (MongoDB, Express, React, NodeJS) stack, with simple CRUD functionalities.
 
-## Technologies used
-1. MongoDB
-2. Express
-3. React.js
-4. Node.js
+## Technologies Used
+MongoDB - Database
+Express - NodeJS Framework
+React - Frontend
+NodeJS - Backend
+MaterialUI - Frontend Framework implementing Google's Material Design
 
-To run the project, cd into the server and client folder of this project, and run npm start on each folder individually.
+## Build Setup
+In the project directory mern-blog, the this command in both the /client and /server folders.
+`
+npm start
+`
+
 
 
 
